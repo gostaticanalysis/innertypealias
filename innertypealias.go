@@ -6,6 +6,7 @@ import (
 	"go/token"
 	"go/types"
 
+	"github.com/gostaticanalysis/analysisutil"
 	"golang.org/x/tools/go/analysis"
 )
 
@@ -18,6 +19,14 @@ var Analyzer = &analysis.Analyzer{
 }
 
 func run(pass *analysis.Pass) (interface{}, error) {
+	embeddeds := make(map[types.Type]bool)
+	for _, st := range analysisutil.Structs(pass.Pkg) {
+		for i := 0; i < st.NumFields(); i++ {
+			if field := st.Field(i); field.Embedded() {
+				embeddeds[field.Type()] = true
+			}
+		}
+	}
 	for _, f := range pass.Files {
 		for _, decl := range f.Decls {
 			decl, _ := decl.(*ast.GenDecl)
@@ -32,7 +41,7 @@ func run(pass *analysis.Pass) (interface{}, error) {
 				}
 
 				typ, _ := pass.TypesInfo.TypeOf(spec.Type).(*types.Named)
-				if typ == nil || typ.Obj().Pkg() != pass.Pkg || !typ.Obj().Exported() {
+				if typ == nil || typ.Obj().Pkg() != pass.Pkg || !typ.Obj().Exported() || embeddeds[typ] {
 					continue
 				}
 
