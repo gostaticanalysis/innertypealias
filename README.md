@@ -26,9 +26,9 @@ type g = t // OK
 `fixinnertypealias` command check and replace a type alias to a defined type.
 
 ```sh
-$ go install github.com/gostaticanalysis/innertypealias/cmd/fixinnertypealias
+$ go install github.com/gostaticanalysis/innertypealias/cmd/fixinnertypealias@latest
 $ fixinnertypealias ./...
 ```
 <!-- links -->
-[gopkg]: https://pkg.go.dev/github.com/gostaticanalysis/innertypealias@latest
+[gopkg]: https://pkg.go.dev/github.com/gostaticanalysis/innertypealias
 [gopkg-badge]: https://pkg.go.dev/badge/github.com/gostaticanalysis/innertypealias?status.svg
