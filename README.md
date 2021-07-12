@@ -30,5 +30,5 @@ $ go install github.com/gostaticanalysis/innertypealias/cmd/fixinnertypealias
 $ fixinnertypealias ./...
 ```
 <!-- links -->
-[gopkg]: https://pkg.go.dev/github.com/gostaticanalysis/innertypealias
+[gopkg]: https://pkg.go.dev/github.com/gostaticanalysis/innertypealias@latest
 [gopkg-badge]: https://pkg.go.dev/badge/github.com/gostaticanalysis/innertypealias?status.svg
