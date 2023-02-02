@@ -76,7 +76,7 @@ func run(pass *analysis.Pass) (interface{}, error) {
 				pass.Report(analysis.Diagnostic{
 					Pos:            spec.Pos(),
 					End:            spec.End(),
-					Message:        fmt.Sprintf("%s is a alias for %s but it is exported type", x, y),
+					Message:        fmt.Sprintf("%s is an alias for %s but it is exported type", x, y),
 					SuggestedFixes: []analysis.SuggestedFix{fix},
 				})
 			}

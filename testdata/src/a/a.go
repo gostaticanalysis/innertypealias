@@ -5,7 +5,7 @@ import "io"
 type T int
 type t int
 
-type A = T         // want "A is a alias for T but it is exported type"
+type A = T         // want "A is an alias for T but it is exported type"
 type B = t         // OK
 type C = io.Writer // OK
 
